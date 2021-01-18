@@ -19,11 +19,25 @@ print(name, "is", age, "years old and has the Matrikelnumber", matnr)
 # (c)
 day_of_birth = input("Enter your day of birth (YYYY-MM-DD): ")
 year = ""
-month = ""
-day = ""
 for i in range(0, 4):
     year += day_of_birth[i]
-print(year)
+month = ""
+for i in range(5, 7):
+    month += day_of_birth[i]
+day = ""
+for i in range(8, 10):
+    day += day_of_birth[i]
 from datetime import datetime
 datetimeObj = datetime.now()
-print(datetimeObj)
+if int(month) > datetimeObj.month:
+    print("Day of Birth:", year, "-", month, "-", day, "; Age:", (datetimeObj.year - int(year)) - 1)
+elif int(month) == datetimeObj.month:
+    if int(day) > datetimeObj.day:
+        print("Day of Birth:", year, "-", month, "-", day, "; Age:", (datetimeObj.year - int(year)) - 1)
+    elif int(day) == datetimeObj.day:
+        print("Day of Birth:", year, "-", month, "-", day, "; Age:", (datetimeObj.year - int(year)))
+        print("Happy Birthday!")
+    elif int(day) < datetimeObj.day:
+        print("Day of Birth:", year, "-", month, "-", day, "; Age:", (datetimeObj.year - int(year)))
+elif int(month) < datetimeObj.month:
+    print("Day of Birth:", year, "-", month, "-", day, "; Age:", (datetimeObj.year - int(year)))
